@@ -27,3 +27,18 @@ class ReceipeAPI(APIView):
             "message": "The data is not saved",
             "data": serializer.errors
         })
+    
+    def delete(self, request):
+        data = request.data
+        r = Receipe.objects.filter(id=data['id'])
+        if r.exists():
+            r.delete()
+            return Response({
+                "status": True,
+                "message": "The data is deleted successfully"
+            })
+
+        return Response({
+            "status": False,
+            "message": "The data not found"
+        })

@@ -37,7 +37,7 @@ class CreateReceipeSerializer(serializers.ModelSerializer):
         receipe = Receipe.objects.create(
             title=validated_data['title'],
             instructions=validated_data['instructions'],
-            #image=validated_data['image'],
+            image=validated_data['image'],
             slug=slug,
             rtype=validated_data['rtype']
         )
